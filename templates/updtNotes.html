@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body%}
+<div class="container mt-5">
+    <h1 class="title">Pедактирование задч</h1>
+    <form method='post'>
+        <input type='text' name='name' id='name' value = '{{note.name}}' class = 'form-control' placeholder='название текста'><br>
+        <textarea  name='text' id='text' class = 'form-control' placeholder='исправте основной текст'>{{note.text}}</textarea><br> 
+    <input type = 'submit' class = 'btn btn-successs' value = 'отправить'>
+</form>
+</div>
+
+{% endblock %}

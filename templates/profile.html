@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+{% block body%}
+<h1>Ваш профиль</h1>
+{%fro elem in Users%}
+<form method='post'>
+    <div class = 'aler alert-info'>
+        <h1> Ваш профиль </h1>
+        <p>Ммя:{{elem.name}}</p>
+        <p>Фамилия:{{elem.surname}}</p>
+</form>
+{%endfor%}
+{% endblock %}

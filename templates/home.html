@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block body%}
+<div class="container mt-5">
+    <div class="container mt-5"><h1> Ваши заметки</h1>
+        {% for elem in notes %}
+            <div class = 'alert alert-info'>
+                    <h2> Название : {{elem.name}}</h2>
+                    <h5> Статус : {{elem.status}}</h5>
+                    
+                <div class = 'imgSet'>
+                    <a href = '/notes/{{elem.id}}'>
+                    <img src = 'https://e7.pngegg.com/pngimages/568/990/png-clipart-computer-icons-productivity-cost-effective-miscellaneous-text.png' alt='settings' class = 'imgSet' width="35" height="35">
+                    </a>
+                </div>
+            </div>
+        {%endfor%} 
+
+    </div>
+</div>
+{% endblock %}

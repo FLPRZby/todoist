@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body%}
+<div class="container mt-5">
+        <h1 class="title">Создать заметку</h1>
+        <form method='post'>
+        <input type='text' name='name' id='name' class = 'form-control' placeholder='Введите название зметки '><br>
+        <textarea  name='text' id='text' class = 'form-control' placeholder='Введите описание заметки'></textarea><br>
+        <input type='text' name='status' id='status' class = 'form-control' placeholder='Введите важность заметки'><br> 
+        <button type="submit" class="btn btn-outline-dark">Отправить</button>
+    </form>
+</div>
+{% endblock %}
