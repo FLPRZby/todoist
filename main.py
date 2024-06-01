@@ -65,13 +65,16 @@ def login():
                 if psw == user.psw:
                     userlogin = UserLogin().create(user)
                     login_user(userlogin)
-                    return redirect('/')
+                    return redirect('/home')
     return render_template("login.html")
     
 
 
-@app.route('/home')#url
 @app.route('/')
+def index():
+    return render_template('base.html')
+
+@app.route('/home')
 def home():
     notes = Notes.query.filter(Notes.user_id==current_user.get_id()) 
     return render_template('home.html' , notes=notes)#подключение HTML
