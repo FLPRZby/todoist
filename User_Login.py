@@ -1,11 +1,11 @@
+from flask_login import LoginManager,login_user, login_required, current_user , UserMixin
 class UserLogin():
     def fromDB(self , user_id , db):
         myusers=db.query.all()
         for user1 in myusers:
             if user_id == str(user1.id):
                 self.__user=user1
-        return self
-    
+        return self 
     def create(self , user):
         self.__user = user 
         return self

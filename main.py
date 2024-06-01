@@ -1,6 +1,6 @@
 from flask import Flask, render_template,url_for, request, redirect, Response 
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager,login_user, login_required, current_user
+from flask_login import LoginManager,login_user, login_required, current_user , UserMixin
 from User_Login import UserLogin
 from werkzeug.utils import secure_filename
 
@@ -21,7 +21,8 @@ class Notes(db.Model):
     name = db.Column (db.String(100), nullable =False)
     text = db.Column (db.String(200), nullable =False) 
     status = db.Column (db.Text , nullable = False )
-    
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+
 @login_manager.user_loader
 def load_user(user_id):
     print('load_user')
@@ -81,7 +82,7 @@ def create():
         name = request.form['name']
         text = request.form['text']
         status = request.form['status'] 
-        note = Notes (name=name ,  text=text , status=status)
+        note = Notes (name=name ,  text=text , status=status, user_id=current_user.get_id())
         
         try:
             print(1)
