@@ -1,7 +1,7 @@
 from flask import Flask, render_template,url_for, request, redirect, Response 
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager,login_user, login_required, current_user
-from Login import UserLogin
+from User_Login import UserLogin
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ class Notes(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     print('load_user')
-    return UserLogin().fromDB(user_id,Users)
+    return UserLogin().fromDB(user_id,User)
 
    
 @app.route('/reg/', methods=['POST', 'GET'])
@@ -64,7 +64,7 @@ def login():
                 if psw == user.psw:
                     userlogin = UserLogin().create(user)
                     login_user(userlogin)
-                    return redirect('/profil/'+str(login))
+                    return redirect('/'+str(login))
     return render_template("login.html")
     
 
@@ -113,27 +113,11 @@ def delNotes(id):
             print(e)
             return 'ошибка'
         
-@app.route('/Notes/<int:id>/updt/', methods=['POST', 'GET']) 
-def updt(id):
-    note =  Notes.query.get(id)
-    if request.method == 'POST':
-    
-        
-        
-        name = request.form['name']
-        text = request.form['text']
-        
-        try:
-            note.title = name    
-            note.title = text
-                
-            db.session.commit()
-                
-            return redirect('/home/')
-        except :
-            return 'при обновлении задачи произошла ошибка'
-    return render_template('updtNotes.html', note=note)
-  
+
+
+@app.route('/profile')
+def profile():
+    d
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
