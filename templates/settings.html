@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% block body%}
 
-<h1> настройки </h1>
-<div class = 'alert alert-info'>
-    <h3> {{notes.name}}</h3>
-    <p> {{notes.text}}</p>
-    <a href = '/notes/{{notes.id}}/del' class = 'btn btn-outline-Succes'>Выполнить заметку</a>  
+
+
+<div class="container mt-5">
+    <h1> настройки </h1>
+    <div class = 'alert alert-info'>
+        <h3> {{notes.name}}</h3>
+        <p> {{notes.text}}</p>
+        <a href = '/notes/{{notes.id}}/del' class = 'btn btn-outline-dark'>Выполнить заметку</a> 
+        <a href = '/notes/{{notes.id}}/del' class = 'btn btn-outline-danger'>Удалить</a> 
+    </div>
 </div>
 
 {% endblock %}

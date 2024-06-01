@@ -9,18 +9,17 @@
 </head>
 <body>
 
-<h1 >Registration</h1>
-<div class = 'Inf'>
-<p>Добавленный логин будет использоваться в качестве вашего имени</p>
-</div>
-<div class = 'reg'>
+
+<div class = 'container mt-5'>
+    <h1 >Registration</h1>
+
     <form method='post'>
     <input type='text' name='login' class = 'form-control' placeholder='Введите свой логин'><br>
     <textarea  name='psw'  class = 'form-control' placeholder='Введите пароль'></textarea><br>
 
+    <input type = 'submit' class = 'btn btn-dark' value = 'отправить'>
+    <a href = '/login' class="btn btn-outline-succes">у вас уже есть аккаунт?</a>
 </div>
-    <input type = 'submit' class = 'btn btn-successs' value = 'отправить'>
-    <a href = '/login' class="btn btn-outline-dark">у вас уже есть аккаунт?</a>
 </form>
 
 </body>

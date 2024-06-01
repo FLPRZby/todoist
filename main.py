@@ -43,7 +43,7 @@ def reg():
             try:
                 db.session.add(user)
                 db.session.commit()
-                return redirect('/')
+                return redirect('/login')
             except:
                 return "При добавлении пользователя произошла ошибка!"
         else:
@@ -73,7 +73,7 @@ def login():
 @app.route('/home')#url
 @app.route('/')
 def home():
-    notes = Notes.query.all() 
+    notes = Notes.query.filter(Notes.user_id==current_user.get_id()) 
     return render_template('home.html' , notes=notes)#подключение HTML
 
 @app.route('/create' , methods=['POST', 'GET'])
@@ -116,9 +116,7 @@ def delNotes(id):
         
 
 
-@app.route('/profile')
-def profile():
-    d
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
